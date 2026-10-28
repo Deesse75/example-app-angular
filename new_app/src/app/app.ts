@@ -1,12 +1,17 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AppButton } from './components/app-button/app-button';
+
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
+  imports: [AppButton],
 })
 export class App {
-  protected readonly title = signal('new_app');
+  protected readonly result = signal(0);
+
+  protected add(value: number): void {
+    this.result.set(this.result() + value);
+  }
 }
